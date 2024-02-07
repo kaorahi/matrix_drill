@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+ <title>Matrix Drill</title>
+ <script defer src="seedrandom/seedrandom.js"></script>
+ <script defer src="mat.js"></script>
+ <style type="text/css">
+  body {padding: 0 0.5em;}
+  input {width: 20vw;}
+  li {padding: 0.3em 0;}
+  li[data-revealed="no"] .ans {display: none;}
+  .splitter {display: flex; justify-content: space-between; width: 100%;}
+  .splitter-item {display: flex; align-items: center;}
+  .header {
+   position: -webkit-sticky; position: sticky; top: 0; z-index: 1000;
+   margin-top: 0.5em; padding: 0.5em 0;
+   color: black; background-color: #fff; border-bottom: 1px solid #ccc;
+  }
+  .footer {
+   text-align: center; margin-top: 0.5em; padding: 0.5em 0;
+   border-top: 1px solid #ccc;
+  }
+ #questions li, .ans {opacity: 0.3; animation: fadeInAnimation 0.5s ease forwards;}
+ @keyframes fadeInAnimation {to {opacity: 1;}}
+ </style>
+</head>
+
+<body>
+
+<h1>Matrix Drill</h1>
+
+<div class="header splitter">
+ <div class="splitter-item">
+  <select id="course" onchange="renew_course()"></select>
+ </div>
+ <div class="splitter-item">
+  <input id="seed" placeholder="seed" oninput="renew_course()">
+ </div>
+</div>
+
+<ol id="questions"></ol>
+
+<div class="splitter">
+ <div class="splitter-item">
+  <button onclick="append_more()">More...</button>
+ </div>
+ <div class="splitter-item">
+  <button id="reveal_all" onclick="reveal_all()">Reveal All</button>
+ </div>
+</div>
+
+<div class="footer">
+ <a href="LICENSE.txt">License</a>
+ /
+ <a href="https://github.com/kaorahi/matrix_drill">Project Home</a>
+</div>
+
+</body>
+</html>
